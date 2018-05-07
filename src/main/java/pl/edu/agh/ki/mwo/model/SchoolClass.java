@@ -71,6 +71,10 @@ public class SchoolClass implements java.io.Serializable {
 	public void setProfile(String profile) {
 		this.profile = profile;
 	}
+	
+	public void removeStudent(Student newStudent) {
+		students.remove(newStudent);
+	}
 
 	public String toString() {
 		return "Class: " + profile + " (Started: " + getStartYear() + ", Current year: " + getCurrentYear() + ")";
