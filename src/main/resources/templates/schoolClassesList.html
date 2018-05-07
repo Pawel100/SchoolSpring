@@ -11,7 +11,7 @@
     	<div th:include="menuFragment" ></div>
 		<br/><Br/>
 		<table border="1" cellpadding="5">
-			<tr><th>Id</th><th>Rok rozpoczęcia</th><th>Obecny rok</th><th>Profil</th><th>Akcje</th></tr>
+			<tr><th>Id</th><th>Rok rozpoczecia</th><th>Obecny rok</th><th>Profil klasy</th></tr>
 			<tr th:each="schoolClass: ${schoolClasses}">
 				<td><span th:text="${schoolClass.id}" /></td>
 				<td><span th:text="${schoolClass.startYear}" /></td>
@@ -26,7 +26,7 @@
 			</tr>
 		
 		
-		</table><br/><a href='AddSchoolClass'>dodaj klasę</a><br/><br/>
+		</table><br/><a href='AddSchoolClass'>dodaj szkołę</a><br/><br/>
 		
     </div>
 
