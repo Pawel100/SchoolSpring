@@ -44,7 +44,7 @@ public class SchoolsController {
 
 		DatabaseConnector.getInstance().addSchool(school);
 		model.addAttribute("schools", DatabaseConnector.getInstance().getSchools());
-		model.addAttribute("message", "Nowa szkoła została dodana");
+		model.addAttribute("message", "Nowa szkola zostala dodana");
 
 		return "schoolsList";
 	}

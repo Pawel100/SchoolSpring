@@ -1,34 +1,63 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorator="layout">
-<body>
+	<body>
 
 
 
-    <span layout:fragment="pageTitle"> - Klasy </span>
+		<span layout:fragment="pageTitle"> - Klasy </span>
 
-    <div layout:fragment="content">
-    	<div th:include="menuFragment" ></div>
-		<br/><Br/>
-		<table border="1" cellpadding="5">
-			<tr><th>Id</th><th>Rok rozpoczecia</th><th>Obecny rok</th><th>Profil klasy</th></tr>
-			<tr th:each="schoolClass: ${schoolClasses}">
-				<td><span th:text="${schoolClass.id}" /></td>
-				<td><span th:text="${schoolClass.startYear}" /></td>
-				<td><span th:text="${schoolClass.currentYear}" /></td>
-				<td><span th:text="${schoolClass.profile}" /></td>
-		        <td>
-		            <form action="DeleteSchoolClass" method="POST">
-		            	<input type="hidden" name="schoolClassId" th:value="${schoolClass.id}" />
-		                <button type="submit">X</button>
-		            </form>
-		        </td>
-			</tr>
-		
-		
-		</table><br/><a href='AddSchoolClass'>dodaj szkołę</a><br/><br/>
-		
-    </div>
+		<div layout:fragment="content">
+			<div th:include="menuFragment" />
+			<br/>
+			<Br/>
+			<table border="1" cellpadding="5">
+				<tr>
+					<th>Id</th>
+					<th>Rok rozpoczecia</th>
+					<th>Obecny rok</th>
+					<th>Profil klasy</th>
+					<th>Szkola</th>
+					<th>Wykonaj</th>
+				</tr>
+				<tr th:each="schoolClass: ${schoolClasses}">
+					<td>
+						<span th:text="${schoolClass.id}" />
+					</td>
+					<td>
+						<span th:text="${schoolClass.startYear}" />
+					</td>
+					<td>
+						<span th:text="${schoolClass.currentYear}" />
+					</td>
+					<td>
+						<span th:text="${schoolClass.profile}" />
+					</td>
+					<td>
+						<span th:each="school : ${schools}" th:object="${school}">
+							<span th:each="schoolClassy : ${school.classes}" th:object="${schoolClassy}" th:if="${schoolClassy.id == schoolClass.id}">
+								<span th:text="${school.name}"/>
+							</span>
+						</span>
+					</td>
+					<td>
+						<form action="ModifySchoolClass" method="POST">
+							<input type="hidden" name="schoolClassId" th:value="${schoolClass.id}"/>
+							<button type="submit">Modyfikuj</button>
+						</form>
+						<form action="DeleteSchoolClass" method="POST">
+							<input type="hidden" name="schoolClassId" th:value="${schoolClass.id}"/>
+							<button type="submit">X</button>
+						</form>
+					</td>
+				</tr>
+			</table>
+			<br/>
+			<a href='AddSchoolClass'>dodaj szkole</a>
+			<br/>
+			<br/>
 
-</body>
+		</div>
+
+	</body>
 </html>

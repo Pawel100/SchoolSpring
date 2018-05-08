@@ -24,7 +24,7 @@ public class LoginController {
 
     @RequestMapping(value="/Welcome")
     public String welcome(Model model, HttpSession session) {
-    	model.addAttribute("message", "Witamy w systemie Szkoła!");
+    	model.addAttribute("message", "Witamy w systemie Szkola!");
         return "welcome";
     }
 }

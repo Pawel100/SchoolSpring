@@ -49,7 +49,7 @@ public class SchoolClassesController {
 		DatabaseConnector.getInstance().addSchoolClass(schoolClass);
 		model.addAttribute("schoolClasses", DatabaseConnector.getInstance().getSchoolClasses());
 		model.addAttribute("schools", DatabaseConnector.getInstance().getSchools());
-		model.addAttribute("message", "Nowa klasa została dodana");
+		model.addAttribute("message", "Nowa klasa zostala dodana");
 
 		return "schoolClassesList";
 	}
@@ -63,7 +63,7 @@ public class SchoolClassesController {
 		DatabaseConnector.getInstance().deleteSchoolClass(schoolClassId);
 		model.addAttribute("schoolClasses", DatabaseConnector.getInstance().getSchoolClasses());
 		model.addAttribute("schools", DatabaseConnector.getInstance().getSchools());
-		model.addAttribute("message", "Klasa została usunięta");
+		model.addAttribute("message", "Klasa zostala usunieta");
 
 		return "schoolClassesList";
 	}
@@ -93,7 +93,7 @@ public class SchoolClassesController {
 		DatabaseConnector.getInstance().updateSchoolClass(schoolClassId, profile, startYear, currentYear, schoolId);
 		model.addAttribute("schoolClasses", DatabaseConnector.getInstance().getSchoolClasses());
 		model.addAttribute("schools", DatabaseConnector.getInstance().getSchools());
-		model.addAttribute("message", "Dane klasy zostały zaktualizowane");
+		model.addAttribute("message", "Dane klasy zostaly zaktualizowane");
 
 		return "schoolClassesList";
 	}

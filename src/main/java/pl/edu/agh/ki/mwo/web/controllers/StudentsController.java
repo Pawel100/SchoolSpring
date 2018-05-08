@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import pl.edu.agh.ki.mwo.model.School;
 import pl.edu.agh.ki.mwo.model.Student;
 import pl.edu.agh.ki.mwo.persistence.DatabaseConnector;
 
@@ -51,7 +52,7 @@ public class StudentsController {
 
 		DatabaseConnector.getInstance().addStudent(student, classId);
 		model.addAttribute("students", DatabaseConnector.getInstance().getStudents());
-		model.addAttribute("message", "Nowy uczeń został dodany");
+		model.addAttribute("message", "Nowy uczen zostal dodany");
 
 		return "studentsList";
 	}
@@ -74,7 +75,7 @@ public class StudentsController {
 			HttpSession session) {
 		if (session.getAttribute("userLogin") == null)
 			return "redirect:/Login";
-
+		
 		model.addAttribute("student", DatabaseConnector.getInstance().getStudent(studentId));
 		model.addAttribute("schoolClasses", DatabaseConnector.getInstance().getSchoolClasses());
 
@@ -92,7 +93,7 @@ public class StudentsController {
 
 		DatabaseConnector.getInstance().updateStudent(studentId, name, surname, pesel, classId);
 		model.addAttribute("students", DatabaseConnector.getInstance().getStudents());
-		model.addAttribute("message", "Dane ucznia zostały zaktualizowane");
+		model.addAttribute("message", "Dane ucznia zostaly zaktualizowane");
 
 		return "studentsList";
 	}
